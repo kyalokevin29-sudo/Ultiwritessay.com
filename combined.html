@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ultiwriteessay.com – The Ultimate Writing Service</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── PAGE SWITCHER ─── */
+.page { display: none; }
+.page.active { display: block; }
+#page-dashboard.active { display: flex !important; min-height: 100vh; }
+
+/* ─── SHARED RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Landing */
+  --ink: #0A0A23; --cream: #F0F4FF; --gold: #7C3AED; --gold-light: #C4B5FD;
+  --slate: #1E1B4B; --mist: #EDE9FE; --success: #10B981; --border: #DDD6FE;
+  --text-muted: #6B7280; --vivid: #F59E0B;
+  /* Dashboard */
+  --navy: #0D1B2A; --navy2: #122337; --navy3: #1A3050;
+  --ivory: #F7F3EC; --teal: #2EC4B6; --teal2: #25A99D;
+  --amber: #F4A261; --dslate: #8FA3B1; --green: #4CAF82; --white: #FFFFFF;
+}
+
+/* ══════════════════════════════════════════
+   LANDING PAGE
+══════════════════════════════════════════ */
+#page-landing {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* NAV */
+#page-landing nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5%; height: 70px; background: white;
+  border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--ink); letter-spacing: -0.5px; white-space: nowrap; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--slate); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; cursor: pointer; }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { display: flex; gap: 0.75rem; align-items: center; }
+.l-btn-ghost { padding: 0.5rem 1.2rem; border: 1.5px solid var(--border); border-radius: 8px; background: transparent; font-size: 0.88rem; font-weight: 600; cursor: pointer; color: var(--slate); transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.l-btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.l-btn-primary { padding: 0.55rem 1.4rem; background: var(--gold); border: none; border-radius: 8px; color: white; font-size: 0.88rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; font-family: 'Inter', sans-serif; }
+.l-btn-primary:hover { background: #6d28d9; transform: translateY(-1px); }
+
+/* HERO */
+.l-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 70px); background: linear-gradient(135deg, #0A0A23 0%, #1E1B4B 60%, #4C1D95 100%); position: relative; overflow: hidden; }
+.l-hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%); pointer-events: none; }
+.l-hero-left { padding: 80px 5% 80px 8%; display: flex; flex-direction: column; justify-content: center; z-index: 1; }
+.l-hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(124,58,237,0.18); border: 1px solid rgba(124,58,237,0.5); color: var(--gold-light); padding: 0.35rem 1rem; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 1.8rem; width: fit-content; }
+.l-hero-badge::before { content: '✦'; font-size: 0.7rem; }
+.l-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 900; color: white; line-height: 1.1; margin-bottom: 1.5rem; }
+.l-hero h1 em { font-style: italic; color: var(--gold-light); }
+.l-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 440px; margin-bottom: 2.5rem; }
+.l-hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.l-btn-hero { padding: 0.9rem 2rem; background: var(--gold); border: none; border-radius: 10px; color: white; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 20px rgba(124,58,237,0.45); font-family: 'Inter', sans-serif; }
+.l-btn-hero:hover { background: #6d28d9; transform: translateY(-2px); }
+.l-btn-outline { padding: 0.9rem 2rem; background: transparent; border: 1.5px solid rgba(255,255,255,0.3); border-radius: 10px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.l-btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+.l-trust-strip { display: flex; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
+.l-trust-item { display: flex; flex-direction: column; }
+.l-trust-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--gold-light); line-height: 1; }
+.l-trust-lbl { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+.l-hero-right { display: flex; align-items: center; justify-content: center; padding: 60px 5%; z-index: 1; }
+.l-order-card { background: white; border-radius: 20px; padding: 2rem; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.l-order-card h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--ink); }
+.l-subtitle { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+.l-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+.l-form-group { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.75rem; }
+.l-form-group label { font-size: 0.75rem; font-weight: 600; color: var(--slate); text-transform: uppercase; letter-spacing: 0.4px; }
+.l-form-group select { padding: 0.6rem 0.75rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.88rem; color: var(--ink); background: var(--mist); transition: border-color 0.2s; font-family: 'Inter', sans-serif; }
+.l-form-group select:focus { outline: none; border-color: var(--gold); }
+.l-price-box { background: linear-gradient(135deg, var(--slate), #4C1D95); border-radius: 10px; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.l-price-lbl { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+.l-price-from { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+.l-price-amt { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold-light); }
+.l-btn-order { width: 100%; padding: 0.85rem; background: var(--gold); border: none; border-radius: 10px; color: white; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+.l-btn-order:hover { background: #6d28d9; }
+.l-footnote { text-align: center; margin-top: 0.8rem; font-size: 0.75rem; color: var(--text-muted); }
+.l-footnote span { color: var(--success); font-weight: 600; }
+
+/* SECTIONS */
+#page-landing section { padding: 80px 8%; }
+.l-sec-lbl { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 0.75rem; }
+.l-sec-h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--ink); line-height: 1.2; max-width: 540px; }
+.l-sec-h2 em { font-style: italic; color: var(--gold); }
+.l-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.l-feature-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; transition: box-shadow 0.2s, transform 0.2s; }
+.l-feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+.l-feat-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.l-feature-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--ink); }
+.l-feature-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+.l-how-section { background: linear-gradient(135deg, #0A0A23, #1E1B4B, #4C1D95); color: white; }
+.l-how-section .l-sec-h2 { color: white; max-width: 100%; }
+.l-steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.l-step { text-align: center; padding: 1.5rem 1rem; }
+.l-step-num { width: 56px; height: 56px; background: rgba(124,58,237,0.18); border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold-light); margin: 0 auto 1.2rem; }
+.l-step h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; color: white; }
+.l-step p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+.l-writers-section { background: var(--mist); }
+.l-sec-sub { max-width: 640px; margin: 1rem auto 0; text-align: center; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
+.l-tutor-card { max-width: 880px; margin: 3rem auto 0; background: white; border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: center; box-shadow: 0 8px 30px rgba(0,0,0,0.05); }
+.l-tutor-av { width: 110px; height: 110px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.6rem; background: linear-gradient(135deg, var(--gold), #9333ea); flex-shrink: 0; }
+.l-tutor-info h4 { font-weight: 700; font-size: 1.2rem; margin-bottom: 0.3rem; }
+.l-tutor-tag { font-size: 0.78rem; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 0.9rem; }
+.l-tutor-info p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.3rem; }
+.l-tutor-perks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+.l-tutor-perk { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--slate); font-weight: 600; }
+.l-tutor-perk span { font-size: 1.05rem; line-height: 1.1; }
+.l-reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.l-review-card { background: white; border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); }
+.l-review-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 1rem; }
+.l-review-text { font-size: 0.9rem; color: var(--slate); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+.l-review-author { display: flex; align-items: center; gap: 0.75rem; }
+.l-review-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), #9333ea); display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.l-review-name { font-weight: 700; font-size: 0.88rem; }
+.l-review-detail { font-size: 0.75rem; color: var(--text-muted); }
+.l-guarantee-strip { background: var(--gold); padding: 1.5rem 8%; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.l-guarantee-item { display: flex; align-items: center; gap: 0.6rem; color: white; font-size: 0.88rem; font-weight: 600; }
+.l-cta-section { background: linear-gradient(135deg, #0A0A23, #1E1B4B, #4C1D95); text-align: center; padding: 80px 8%; }
+.l-cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: white; margin-bottom: 1rem; }
+.l-cta-section h2 em { font-style: italic; color: var(--gold-light); }
+.l-cta-section p { color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.7; }
+footer { background: var(--ink); color: rgba(255,255,255,0.5); padding: 50px 8% 30px; font-family: 'Inter', sans-serif; }
+.l-footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.l-footer-brand .logo { color: white; font-size: 1.15rem; }
+.l-footer-brand p { font-size: 0.83rem; line-height: 1.7; margin-top: 0.75rem; max-width: 280px; }
+.l-footer-col h5 { font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; color: white; margin-bottom: 1rem; }
+.l-footer-col ul { list-style: none; }
+.l-footer-col ul li { margin-bottom: 0.5rem; font-size: 0.83rem; }
+.l-footer-col ul li a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+.l-footer-col ul li a:hover { color: var(--gold-light); }
+.l-footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; flex-wrap: wrap; gap: 1rem; }
+.l-footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+/* ══════════════════════════════════════════
+   DASHBOARD
+══════════════════════════════════════════ */
+#page-dashboard {
+  font-family: 'Inter', sans-serif;
+  background: var(--navy);
+  color: var(--ivory);
+}
+
+.sd-sidebar { width: 240px; min-height: 100vh; background: var(--navy2); border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; padding: 0 0 24px; flex-shrink: 0; }
+.sd-logo { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+.sd-logo-text { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--white); letter-spacing: -0.3px; }
+.sd-logo-text em { color: var(--teal); font-style: normal; }
+.sd-back { background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--dslate); cursor: pointer; font-size: 0.72rem; font-family: 'Inter', sans-serif; font-weight: 500; padding: 5px 10px; border-radius: 6px; transition: all 0.15s; white-space: nowrap; }
+.sd-back:hover { background: rgba(255,255,255,0.07); color: var(--ivory); }
+.sd-nav { padding: 20px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.sd-nav-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dslate); padding: 10px 12px 6px; }
+.sd-nav-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--dslate); font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.15s, color 0.15s; text-decoration: none; }
+.sd-nav-item:hover { background: rgba(255,255,255,0.05); color: var(--ivory); }
+.sd-nav-item.active { background: rgba(46,196,182,0.14); color: var(--teal); }
+.sd-nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
+.sd-badge { margin-left: auto; background: var(--amber); color: var(--navy); font-size: 0.7rem; font-weight: 700; padding: 1px 7px; border-radius: 20px; }
+.sd-user { margin: 0 12px; padding: 14px 12px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 10px; cursor: pointer; border-radius: 8px; transition: background 0.15s; }
+.sd-user:hover { background: rgba(255,255,255,0.05); }
+.sd-uav { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--navy3)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; color: var(--white); flex-shrink: 0; }
+.sd-uname { font-size: 0.82rem; font-weight: 600; color: var(--ivory); }
+.sd-uplan { font-size: 0.7rem; color: var(--teal); }
+
+.sd-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.sd-topbar { background: var(--navy2); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 0 32px; height: 62px; display: flex; align-items: center; gap: 16px; }
+.sd-topbar-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--white); flex: 1; }
+.sd-topbar-actions { display: flex; gap: 10px; align-items: center; }
+.sd-btn-primary { background: var(--teal); color: var(--navy); border: none; padding: 9px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.15s, transform 0.1s; font-family: 'Inter', sans-serif; }
+.sd-btn-primary:hover { background: var(--teal2); transform: translateY(-1px); }
+.sd-btn-ghost { background: transparent; color: var(--dslate); border: 1px solid rgba(255,255,255,0.1); padding: 9px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; font-family: 'Inter', sans-serif; }
+.sd-btn-ghost:hover { color: var(--ivory); border-color: rgba(255,255,255,0.25); }
+
+.sd-content { flex: 1; padding: 32px; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; }
+.sd-sec-h { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dslate); margin-bottom: 14px; }
+.sd-grid { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
+.sd-order-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 28px; }
+.sd-order-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
+.sd-order-id { font-size: 0.72rem; color: var(--dslate); font-weight: 500; }
+.sd-order-title { font-family: 'Playfair Display', serif; font-size: 1.18rem; font-weight: 700; color: var(--white); margin-top: 4px; line-height: 1.3; }
+.sd-chip { padding: 5px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; flex-shrink: 0; background: rgba(76,175,130,0.18); color: var(--green); border: 1px solid rgba(76,175,130,0.3); }
+.sd-meta { display: flex; gap: 20px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; }
+.sd-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.sd-meta-lbl { font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dslate); font-weight: 600; }
+.sd-meta-val { font-size: 0.9rem; font-weight: 600; color: var(--ivory); }
+.sd-progress-sec { margin-top: 28px; }
+.sd-prog-lbl { font-size: 0.72rem; color: var(--dslate); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.07em; }
+.sd-timeline { position: relative; display: flex; align-items: flex-start; }
+.sd-timeline::before { content: ''; position: absolute; top: 14px; left: 14px; right: 14px; height: 2px; background: rgba(255,255,255,0.07); z-index: 0; }
+.sd-tl-fill { position: absolute; top: 14px; left: 14px; height: 2px; background: linear-gradient(90deg, var(--teal), var(--amber)); z-index: 1; width: 52%; }
+.sd-tstep { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; position: relative; z-index: 2; }
+.sd-tdot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.1); background: var(--navy2); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--dslate); }
+.sd-tdot.done { background: var(--teal); border-color: var(--teal); color: var(--navy); font-weight: 700; }
+.sd-tdot.cur { border-color: var(--amber); color: var(--amber); animation: sdpulse 2s infinite; }
+@keyframes sdpulse { 0%,100%{box-shadow:0 0 0 4px rgba(244,162,97,0.15);}50%{box-shadow:0 0 0 8px rgba(244,162,97,0.07);} }
+.sd-tlbl { font-size: 0.68rem; color: var(--dslate); text-align: center; line-height: 1.3; }
+.sd-tlbl.done { color: var(--teal); }
+.sd-tlbl.cur { color: var(--amber); font-weight: 600; }
+.sd-deadline { margin-top: 22px; background: rgba(255,255,255,0.04); border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; border: 1px solid rgba(255,255,255,0.05); }
+.sd-dl-icon { font-size: 1.2rem; }
+.sd-dl-text { flex: 1; }
+.sd-dl-title { font-size: 0.78rem; font-weight: 600; color: var(--ivory); }
+.sd-dl-sub { font-size: 0.7rem; color: var(--dslate); margin-top: 2px; }
+.sd-countdown { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--amber); }
+
+.sd-tutor-panel { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; }
+.sd-tutor-panel::before { content: ''; position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(46,196,182,0.12), transparent 70%); pointer-events: none; }
+.sd-tutor-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.sd-tavwrap { position: relative; }
+.sd-tav { width: 58px; height: 58px; border-radius: 50%; background: linear-gradient(135deg, #2EC4B6, #1A3050); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); border: 2px solid rgba(46,196,182,0.4); }
+.sd-tonline { position: absolute; bottom: 2px; right: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid var(--navy2); }
+.sd-tname { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
+.sd-tfield { font-size: 0.75rem; color: var(--teal); font-weight: 500; margin-top: 2px; }
+.sd-tstars { display: flex; gap: 3px; margin-top: 5px; align-items: center; }
+.sd-star { color: var(--amber); font-size: 0.78rem; }
+.sd-starcount { font-size: 0.72rem; color: var(--dslate); margin-left: 4px; }
+.sd-tstats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.sd-tstat { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.05); }
+.sd-tstat-val { font-size: 1.05rem; font-weight: 700; color: var(--ivory); }
+.sd-tstat-lbl { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--dslate); margin-top: 2px; }
+.sd-tbio { font-size: 0.8rem; color: var(--dslate); line-height: 1.6; margin-bottom: 18px; }
+.sd-ttags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.sd-ttag { background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.2); color: var(--teal); font-size: 0.68rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+.sd-tactions { display: flex; flex-direction: column; gap: 8px; }
+.sd-btn-msg { width: 100%; background: var(--teal); color: var(--navy); border: none; padding: 11px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: background 0.15s, transform 0.1s; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; }
+.sd-btn-msg:hover { background: var(--teal2); transform: translateY(-1px); }
+.sd-btn-file { width: 100%; background: transparent; color: var(--dslate); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif; }
+.sd-btn-file:hover { color: var(--ivory); border-color: rgba(255,255,255,0.25); }
+
+.sd-bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.sd-mini-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 22px; }
+.sd-mini-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.sd-mini-title .sdot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.sd-msg-list { display: flex; flex-direction: column; gap: 12px; }
+.sd-msg-item { display: flex; gap: 10px; align-items: flex-start; }
+.sd-msg-av { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 700; color: var(--white); }
+.sd-msg-av.tutor { background: linear-gradient(135deg, var(--teal), #1A3050); }
+.sd-msg-av.me { background: linear-gradient(135deg, var(--amber), #c97c3c); }
+.sd-bubble { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 13px; max-width: 80%; }
+.sd-bubble.me { background: rgba(46,196,182,0.1); border: 1px solid rgba(46,196,182,0.15); }
+.sd-msg-text { font-size: 0.8rem; color: var(--ivory); line-height: 1.5; }
+.sd-msg-time { font-size: 0.65rem; color: var(--dslate); margin-top: 4px; }
+.sd-msg-input-row { display: flex; gap: 8px; margin-top: 14px; align-items: center; }
+.sd-msg-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 9px 13px; font-size: 0.82rem; color: var(--ivory); font-family: 'Inter', sans-serif; outline: none; }
+.sd-msg-input:focus { border-color: var(--teal); }
+.sd-msg-input::placeholder { color: var(--dslate); }
+.sd-btn-send { background: var(--teal); border: none; border-radius: 8px; padding: 9px 14px; color: var(--navy); font-size: 0.9rem; cursor: pointer; }
+.sd-btn-send:hover { background: var(--teal2); }
+.sd-file-list { display: flex; flex-direction: column; gap: 10px; }
+.sd-file-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: background 0.15s; }
+.sd-file-item:hover { background: rgba(255,255,255,0.08); }
+.sd-file-icon { font-size: 1.2rem; flex-shrink: 0; }
+.sd-file-meta { flex: 1; min-width: 0; }
+.sd-file-name { font-size: 0.8rem; font-weight: 600; color: var(--ivory); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sd-file-size { font-size: 0.68rem; color: var(--dslate); margin-top: 2px; }
+.sd-file-date { font-size: 0.68rem; color: var(--dslate); }
+.sd-upload-btn { margin-top: 12px; width: 100%; background: transparent; border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; padding: 10px; color: var(--dslate); font-size: 0.8rem; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s; }
+.sd-upload-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .l-hero{grid-template-columns:1fr;}
+  .l-hero-left{padding:50px 6%;text-align:center;}
+  .l-trust-strip{justify-content:center;}
+  .l-hero-badge{margin:0 auto 1.5rem;}
+  .l-hero-sub{margin:0 auto 2rem;}
+  .l-hero-actions{justify-content:center;}
+  .l-hero-right{padding:0 6% 50px;}
+  .l-footer-top{grid-template-columns:1fr 1fr;}
+  #page-landing nav .nav-links{display:none;}
+  .sd-grid{grid-template-columns:1fr;}
+  .sd-bottom-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .l-footer-top{grid-template-columns:1fr;}
+  .l-form-row{grid-template-columns:1fr;}
+  #page-landing section{padding:60px 5%;}
+  .sd-sidebar{width:60px;}
+  .sd-logo-text,.sd-nav-lbl,.sd-uname,.sd-uplan,.sd-back{display:none;}
+  .sd-nav-item{justify-content:center;padding:12px;}
+  .sd-nav-item .icon{width:auto;}
+  .sd-badge{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     PAGE 1: LANDING
+══════════════════════════════════ -->
+<div id="page-landing" class="page active">
+
+<nav>
+  <div class="logo">Ultiwrite<span>essay</span>.com</div>
+  <ul class="nav-links">
+    <li><a onclick="scrollTo('l-how')">How It Works</a></li>
+    <li><a onclick="scrollTo('l-features')">Services</a></li>
+    <li><a onclick="scrollTo('l-writers')">Your Tutor</a></li>
+    <li><a onclick="scrollTo('l-reviews')">Reviews</a></li>
+    <li><a href="mailto:ultimatewriters98@gmail.com">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <button class="l-btn-ghost" onclick="goToDash()">Log In</button>
+    <button class="l-btn-primary" onclick="goToDash()">Order Now</button>
+  </div>
+</nav>
+
+<div style="background:linear-gradient(90deg,#7C3AED,#EC4899);padding:0.55rem 5%;display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;">
+  <span style="color:white;font-size:0.82rem;font-weight:500;">📧 Need help? Reach your tutor directly:</span>
+  <a href="mailto:ultimatewriters98@gmail.com" style="color:#fde68a;font-weight:700;font-size:0.85rem;text-decoration:none;">ultimatewriters98@gmail.com</a>
+</div>
+
+<!-- HERO -->
+<section class="l-hero">
+  <div class="l-hero-left">
+    <div class="l-hero-badge">Trusted by 50,000+ Students Worldwide</div>
+    <h1>Words That <em>Win.</em><br/>Papers That <em>Impress.</em></h1>
+    <p class="l-hero-sub">One dedicated expert. Zero plagiarism. Delivered on time — every time. From essays to dissertations, Ultiwriteessay.com turns your deadlines into achievements.</p>
+    <div class="l-hero-actions">
+      <button class="l-btn-hero" onclick="goToDash()">Start My Order →</button>
+      <button class="l-btn-outline" onclick="goToDash()">View Samples</button>
+    </div>
+    <div class="l-trust-strip">
+      <div class="l-trust-item"><span class="l-trust-num">50K+</span><span class="l-trust-lbl">Happy Clients</span></div>
+      <div class="l-trust-item"><span class="l-trust-num">4.9★</span><span class="l-trust-lbl">Avg. Rating</span></div>
+      <div class="l-trust-item"><span class="l-trust-num">12+</span><span class="l-trust-lbl">Years Active</span></div>
+      <div class="l-trust-item"><span class="l-trust-num">100%</span><span class="l-trust-lbl">Original Work</span></div>
+    </div>
+  </div>
+  <div class="l-hero-right">
+    <div class="l-order-card">
+      <h3>Get Your Paper Written</h3>
+      <p class="l-subtitle">Fill in the details and get started</p>
+      <div class="l-form-group">
+        <label>Type of Paper</label>
+        <select id="ptype"><option>Essay</option><option>Research Paper</option><option>Dissertation</option><option>Case Study</option><option>Term Paper</option><option>Thesis</option><option>Coursework</option><option>Book Review</option></select>
+      </div>
+      <div class="l-form-row">
+        <div class="l-form-group"><label>Academic Level</label><select id="alevel"><option>Undergraduate</option><option>Bachelor's</option><option>Master's</option><option>PhD</option></select></div>
+        <div class="l-form-group"><label>Pages</label><select id="pages"><option>1 page</option><option>2 pages</option><option>3 pages</option><option>5 pages</option><option>10 pages</option></select></div>
+      </div>
+      <div class="l-form-row">
+        <div class="l-form-group"><label>Spacing</label><select id="spacing"><option>Double-spaced</option><option>Single-spaced</option></select></div>
+        <div class="l-form-group"><label>Deadline</label><select id="deadline"><option>6 hours</option><option>12 hours</option><option>24 hours</option><option selected>3 days</option><option>7 days</option><option>14 days</option></select></div>
+      </div>
+      <div class="l-price-box">
+        <div><div class="l-price-lbl">Pricing</div><div class="l-price-from">estimated from</div></div>
+        <div class="l-price-amt">$10<span style="font-size:0.85rem;font-weight:400;color:rgba(255,255,255,0.6)">/page</span></div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">💬 Pricing is negotiated directly with your tutor before any work begins.</p>
+      <button class="l-btn-order" onclick="goToDash()">Order Now — It's Easy</button>
+      <p class="l-footnote"><span>🔒 Secure checkout.</span> Free revisions included.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<div class="l-guarantee-strip">
+  <div class="l-guarantee-item"><span>🔒</span> 100% Confidential</div>
+  <div class="l-guarantee-item"><span>✅</span> Plagiarism-Free Guarantee</div>
+  <div class="l-guarantee-item"><span>🔄</span> Free Unlimited Revisions</div>
+  <div class="l-guarantee-item"><span>💬</span> 24/7 Support</div>
+  <div class="l-guarantee-item"><span>💰</span> Money-Back Guarantee</div>
+</div>
+
+<!-- FEATURES -->
+<section id="l-features">
+  <div class="l-sec-lbl">Why Ultiwriteessay.com</div>
+  <h2 class="l-sec-h2">Writing Help That Actually <em>Delivers</em></h2>
+  <div class="l-features-grid">
+    <div class="l-feature-card"><span class="l-feat-icon">✍️</span><h4>Expert Human Tutor</h4><p>Every paper is written by your dedicated academic expert — never AI-generated. Matched to your subject and level.</p></div>
+    <div class="l-feature-card"><span class="l-feat-icon">🔬</span><h4>Deep Research</h4><p>Your tutor digs into credible sources and crafts arguments that hold up under academic scrutiny.</p></div>
+    <div class="l-feature-card"><span class="l-feat-icon">⚡</span><h4>On-Time, Every Time</h4><p>Deadlines are taken seriously. Even a 6-hour turnaround is handled without sacrificing quality.</p></div>
+    <div class="l-feature-card"><span class="l-feat-icon">🛡️</span><h4>Plagiarism-Free Work</h4><p>Each paper is scanned with industry-leading tools and delivered with a full originality report.</p></div>
+    <div class="l-feature-card"><span class="l-feat-icon">🔄</span><h4>Free Revisions</h4><p>Not 100% happy? Revisions are made until you are. Your satisfaction is built into every order.</p></div>
+    <div class="l-feature-card"><span class="l-feat-icon">🌐</span><h4>Any Subject, Any Level</h4><p>From high school essays to PhD dissertations — 50+ subjects covered by your personal academic tutor.</p></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="l-how-section" id="l-how">
+  <div class="l-sec-lbl" style="color:var(--gold-light);">Simple Process</div>
+  <h2 class="l-sec-h2">From Order to <em style="color:var(--gold-light)">Delivered</em> in 4 Steps</h2>
+  <div class="l-steps-grid">
+    <div class="l-step"><div class="l-step-num">1</div><h4>Fill Your Order Form</h4><p>Tell us your paper type, subject, length, academic level, and deadline. Takes under 2 minutes.</p></div>
+    <div class="l-step"><div class="l-step-num">2</div><h4>Connect With Your Tutor</h4><p>You're connected with your dedicated tutor, who reviews your requirements and provides a fair quote before any work begins.</p></div>
+    <div class="l-step">
+      <div class="l-step-num">3</div><h4>Track Your Progress</h4><p>Chat directly with your tutor, check progress updates, and share additional materials in real time.</p>
+      <button class="l-btn-hero" style="margin-top:1.2rem;font-size:0.85rem;padding:0.7rem 1.4rem;" onclick="goToDash()">Track My Order →</button>
+    </div>
+    <div class="l-step"><div class="l-step-num">4</div><h4>Receive &amp; Approve</h4><p>Download your polished paper, review it, and request any revisions before giving final approval.</p></div>
+  </div>
+</section>
+
+<!-- WRITERS -->
+<section class="l-writers-section" id="l-writers">
+  <div class="l-sec-lbl">Personalized Support</div>
+  <h2 class="l-sec-h2" style="text-align:center;max-width:100%;">One Writer, <em>Dedicated to You</em></h2>
+  <p class="l-sec-sub">Unlike services that hand your work to a different stranger every time, Ultiwriteessay.com assigns one qualified professional to handle every assignment you place.</p>
+  <div class="l-tutor-card">
+    <div class="l-tutor-av">🎓</div>
+    <div class="l-tutor-info">
+      <h4>Your Personal Writer</h4>
+      <div class="l-tutor-tag">Matched to your subject &amp; academic level</div>
+      <p>From your very first order, you're paired with a single dedicated professional who stays with you for every future assignment. They learn your writing style, your course requirements, and your professor's expectations — so every paper feels consistent, personal, and truly yours.</p>
+      <div class="l-tutor-perks">
+        <div class="l-tutor-perk"><span>📞</span> Call your writer directly, any time</div>
+        <div class="l-tutor-perk"><span>💬</span> Discuss and chat about your work 24/7</div>
+        <div class="l-tutor-perk"><span>🔁</span> The same writer handles every new order</div>
+        <div class="l-tutor-perk"><span>🤝</span> A real working relationship, not a stranger</div>
+      </div>
+      <button class="l-btn-hero" style="margin-top:1.4rem;font-size:0.88rem;padding:0.7rem 1.6rem;" onclick="goToDash()">Meet Your Tutor in the Dashboard →</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+  <div class="l-sec-lbl">Flexible Pricing</div>
+  <h2 class="l-sec-h2">Fair Pricing, <em>Tailored to You</em></h2>
+  <p style="color:var(--text-muted);font-size:1rem;line-height:1.75;max-width:680px;margin-top:1rem;">Pricing is always negotiated directly between you and your tutor before any work is assigned.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2.5rem;">
+    <div class="l-feature-card" style="border-left:4px solid var(--gold);background:linear-gradient(135deg,#f5f3ff,#ede9fe);"><span class="l-feat-icon">💬</span><h4>Negotiate Before You Pay</h4><p>No hidden fees. Agree on the price with your tutor before a single word is written. You're always in control.</p></div>
+    <div class="l-feature-card" style="border-left:4px solid var(--vivid);background:linear-gradient(135deg,#fffbeb,#fef3c7);"><span class="l-feat-icon">📄</span><h4>Starting From $10 / Page</h4><p>A standard 1-page paper starts at an estimated $10. Final pricing depends on your specific requirements.</p></div>
+    <div class="l-feature-card" style="border-left:4px solid var(--success);background:linear-gradient(135deg,#f0fdf4,#dcfce7);"><span class="l-feat-icon">🤝</span><h4>Transparent &amp; Fair</h4><p>No surprises, no pressure. Your tutor gives you a quote you can trust.</p></div>
+  </div>
+  <div style="margin-top:2.5rem;background:linear-gradient(135deg,var(--slate),#4C1D95);border-radius:16px;padding:2rem 2.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+    <div style="flex:1;min-width:200px;">
+      <div style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold-light);margin-bottom:0.4rem;">Ready to get a quote?</div>
+      <p style="color:rgba(255,255,255,0.75);font-size:0.95rem;line-height:1.6;margin:0;">Get a personalised price — completely obligation-free.</p>
+    </div>
+    <button class="l-btn-hero" style="white-space:nowrap;" onclick="goToDash()">Get Started in Your Dashboard →</button>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="l-writers-section" id="l-reviews">
+  <div class="l-sec-lbl">Client Reviews</div>
+  <h2 class="l-sec-h2">What Our <em>Clients Say</em></h2>
+  <div class="l-reviews-grid">
+    <div class="l-review-card"><div class="l-review-stars">★★★★★</div><p class="l-review-text">"I was drowning in assignments and Ultiwriteessay.com saved me. My research paper came back better than I expected — cited correctly, well-argued, and on time!"</p><div class="l-review-author"><div class="l-review-av">👧</div><div><div class="l-review-name">Jessica A.</div><div class="l-review-detail">Undergraduate · Business</div></div></div></div>
+    <div class="l-review-card"><div class="l-review-stars">★★★★★</div><p class="l-review-text">"My dissertation proposal was approved on the first submission. The writer understood exactly what my committee wanted. Worth every penny."</p><div class="l-review-author"><div class="l-review-av">👨</div><div><div class="l-review-name">David O.</div><div class="l-review-detail">Master's · Public Policy</div></div></div></div>
+    <div class="l-review-card"><div class="l-review-stars">★★★★★</div><p class="l-review-text">"Fast, professional, and genuinely helpful. I asked for revisions once and the turnaround was within a few hours. I'll definitely use Ultiwriteessay.com again."</p><div class="l-review-author"><div class="l-review-av">👩</div><div><div class="l-review-name">Fatima K.</div><div class="l-review-detail">Bachelor's · Nursing</div></div></div></div>
+    <div class="l-review-card"><div class="l-review-stars">★★★★★</div><p class="l-review-text">"Excellent service from start to finish. My tutor was easy to reach, explained everything clearly, and delivered a flawless paper well before my deadline."</p><div class="l-review-author"><div class="l-review-av">👨</div><div><div class="l-review-name">Vince</div><div class="l-review-detail">Undergraduate · Engineering</div></div></div></div>
+    <div class="l-review-card"><div class="l-review-stars">★★★★★</div><p class="l-review-text">"Absolutely excellent experience! My writer understood my topic perfectly and the final paper was well-researched and properly formatted."</p><div class="l-review-author"><div class="l-review-av">👩</div><div><div class="l-review-name">Joana</div><div class="l-review-detail">Master's · Psychology</div></div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="l-cta-section">
+  <h2>Ready to Write Your <em>Success Story?</em></h2>
+  <p>Join thousands of students who trust Ultiwriteessay.com for expert academic support. Contact your tutor and get a personalised quote today.</p>
+  <button class="l-btn-hero" style="font-size:1.1rem;padding:1rem 2.5rem;" onclick="goToDash()">Place My Order Now →</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="l-footer-top">
+    <div class="l-footer-brand">
+      <div class="logo">Ultiwrite<span>essay</span>.com</div>
+      <p>Your trusted partner for premium academic and professional writing services. Quality work, delivered on time.</p>
+    </div>
+    <div class="l-footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a onclick="goToDash()">Essay Writing</a></li>
+        <li><a onclick="goToDash()">Research Papers</a></li>
+        <li><a onclick="goToDash()">Dissertations</a></li>
+        <li><a onclick="goToDash()">Proofreading</a></li>
+        <li><a onclick="goToDash()">Coursework</a></li>
+      </ul>
+    </div>
+    <div class="l-footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a onclick="scrollTo('l-writers')">Your Tutor</a></li>
+        <li><a onclick="goToDash()">Samples</a></li>
+        <li><a onclick="scrollTo('l-reviews')">Reviews</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="l-footer-col">
+      <h5>Support</h5>
+      <ul>
+        <li><a onclick="scrollTo('l-how')">How It Works</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="mailto:ultimatewriters98@gmail.com">Contact Us</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+      <div style="margin-top:1rem;">
+        <div style="font-size:0.75rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.4rem;">Email Support</div>
+        <a href="mailto:ultimatewriters98@gmail.com" style="color:var(--gold-light);font-size:0.82rem;word-break:break-all;">ultimatewriters98@gmail.com</a>
+      </div>
+      <div style="margin-top:1.2rem;">
+        <button class="l-btn-primary" onclick="goToDash()" style="width:100%;padding:0.65rem;">My Account →</button>
+      </div>
+    </div>
+  </div>
+  <div class="l-footer-bottom">
+    <span>© 2025 Ultiwriteessay.com. All rights reserved.</span>
+    <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Cookie Policy</a></span>
+  </div>
+</footer>
+
+</div><!-- /#page-landing -->
+
+
+<!-- ══════════════════════════════════
+     PAGE 2: SCHOLARDECK DASHBOARD
+══════════════════════════════════ -->
+<div id="page-dashboard" class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sd-sidebar">
+    <div class="sd-logo">
+      <span class="sd-logo-text">Scholar<em>Desk</em></span>
+      <button class="sd-back" onclick="goToLanding()">← Site</button>
+    </div>
+    <nav class="sd-nav">
+      <div class="sd-nav-lbl">Orders</div>
+      <a class="sd-nav-item active" href="#"><span class="icon">📋</span> Active Orders <span class="sd-badge">1</span></a>
+      <a class="sd-nav-item" href="#"><span class="icon">✅</span> Completed</a>
+      <a class="sd-nav-item" href="#"><span class="icon">⏳</span> In Revision</a>
+      <div class="sd-nav-lbl" style="margin-top:10px">Account</div>
+      <a class="sd-nav-item" href="#"><span class="icon">💬</span> Messages</a>
+      <a class="sd-nav-item" href="#"><span class="icon">📁</span> My Files</a>
+      <a class="sd-nav-item" href="#"><span class="icon">💳</span> Billing</a>
+      <a class="sd-nav-item" href="#"><span class="icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sd-user">
+      <div class="sd-uav">JM</div>
+      <div>
+        <div class="sd-uname">Jordan Mitchell</div>
+        <div class="sd-uplan">Premium Plan</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="sd-main">
+    <div class="sd-topbar">
+      <div class="sd-topbar-title">Active Orders</div>
+      <div class="sd-topbar-actions">
+        <button class="sd-btn-ghost" onclick="goToLanding()">← Back to Site</button>
+        <button class="sd-btn-ghost">💬 Support</button>
+        <button class="sd-btn-primary">+ New Order</button>
+      </div>
+    </div>
+
+    <div class="sd-content">
+      <div class="sd-sec-h">Currently in progress</div>
+
+      <div class="sd-grid">
+        <!-- ORDER CARD -->
+        <div class="sd-order-card">
+          <div class="sd-order-head">
+            <div>
+              <div class="sd-order-id">ORDER #SD-20847</div>
+              <div class="sd-order-title">The Role of Cognitive Bias in<br>Modern Political Discourse</div>
+            </div>
+            <div class="sd-chip">In Progress</div>
+          </div>
+          <div class="sd-meta">
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Type</div><div class="sd-meta-val">Research Paper</div></div>
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Pages</div><div class="sd-meta-val">12 pages</div></div>
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Academic Level</div><div class="sd-meta-val">Master's</div></div>
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Citation Style</div><div class="sd-meta-val">APA 7th</div></div>
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Sources</div><div class="sd-meta-val">≥ 15</div></div>
+            <div class="sd-meta-item"><div class="sd-meta-lbl">Price Paid</div><div class="sd-meta-val" style="color:var(--teal)">$148.00</div></div>
+          </div>
+          <div class="sd-progress-sec">
+            <div class="sd-prog-lbl">Order Progress</div>
+            <div class="sd-timeline">
+              <div class="sd-tl-fill"></div>
+              <div class="sd-tstep"><div class="sd-tdot done">✓</div><div class="sd-tlbl done">Order<br>Placed</div></div>
+              <div class="sd-tstep"><div class="sd-tdot done">✓</div><div class="sd-tlbl done">Tutor<br>Assigned</div></div>
+              <div class="sd-tstep"><div class="sd-tdot done">✓</div><div class="sd-tlbl done">Research<br>Phase</div></div>
+              <div class="sd-tstep"><div class="sd-tdot cur">▶</div><div class="sd-tlbl cur">Writing<br>Draft</div></div>
+              <div class="sd-tstep"><div class="sd-tdot">5</div><div class="sd-tlbl">Review &amp;<br>Edits</div></div>
+              <div class="sd-tstep"><div class="sd-tdot">6</div><div class="sd-tlbl">Delivered</div></div>
+            </div>
+          </div>
+          <div class="sd-deadline">
+            <div class="sd-dl-icon">⏱️</div>
+            <div class="sd-dl-text">
+              <div class="sd-dl-title">Deadline</div>
+              <div class="sd-dl-sub">Thursday, June 20 · 11:59 PM EST</div>
+            </div>
+            <div class="sd-countdown" id="sd-countdown">47h 23m</div>
+          </div>
+        </div>
+
+        <!-- TUTOR PANEL -->
+        <div class="sd-tutor-panel">
+          <p class="sd-sec-h" style="margin-bottom:18px">Your assigned tutor</p>
+          <div class="sd-tutor-head">
+            <div class="sd-tavwrap">
+              <div class="sd-tav">DR</div>
+              <div class="sd-tonline"></div>
+            </div>
+            <div>
+              <div class="sd-tname">Dr. Rachel Osei</div>
+              <div class="sd-tfield">Political Science &amp; Psychology</div>
+              <div class="sd-tstars">
+                <span class="sd-star">★</span><span class="sd-star">★</span><span class="sd-star">★</span><span class="sd-star">★</span><span class="sd-star">★</span>
+                <span class="sd-starcount">4.97 (312 reviews)</span>
+              </div>
+            </div>
+          </div>
+          <div class="sd-tstats">
+            <div class="sd-tstat"><div class="sd-tstat-val">847</div><div class="sd-tstat-lbl">Orders Done</div></div>
+            <div class="sd-tstat"><div class="sd-tstat-val">99%</div><div class="sd-tstat-lbl">On-Time Rate</div></div>
+            <div class="sd-tstat"><div class="sd-tstat-val">PhD</div><div class="sd-tstat-lbl">Qualification</div></div>
+            <div class="sd-tstat"><div class="sd-tstat-val">8 yrs</div><div class="sd-tstat-lbl">Experience</div></div>
+          </div>
+          <p class="sd-tbio">Specialized in cognitive psychology and its intersections with political behavior. Published in three peer-reviewed journals. Empirical rigor and clear argumentation in every paper.</p>
+          <div class="sd-ttags">
+            <span class="sd-ttag">Cognitive Bias</span>
+            <span class="sd-ttag">Political Theory</span>
+            <span class="sd-ttag">Behavioral Science</span>
+            <span class="sd-ttag">Research Methods</span>
+          </div>
+          <div class="sd-tactions">
+            <button class="sd-btn-msg">💬 Message Dr. Osei</button>
+            <button class="sd-btn-file">📎 Send a File</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM ROW -->
+      <div class="sd-bottom-grid">
+        <!-- MESSAGES -->
+        <div class="sd-mini-card">
+          <div class="sd-mini-title"><span class="sdot"></span>Recent Messages</div>
+          <div class="sd-msg-list">
+            <div class="sd-msg-item">
+              <div class="sd-msg-av tutor">DR</div>
+              <div class="sd-bubble"><div class="sd-msg-text">Hi Jordan! I've finished the research phase and started drafting the introduction. Lots of great sources on confirmation bias in media.</div><div class="sd-msg-time">Today · 2:14 PM</div></div>
+            </div>
+            <div class="sd-msg-item" style="flex-direction:row-reverse">
+              <div class="sd-msg-av me">JM</div>
+              <div class="sd-bubble me"><div class="sd-msg-text">That sounds great! Please make sure to include the framing effect in section 2.</div><div class="sd-msg-time">Today · 2:38 PM</div></div>
+            </div>
+            <div class="sd-msg-item">
+              <div class="sd-msg-av tutor">DR</div>
+              <div class="sd-bubble"><div class="sd-msg-text">Absolutely, I'll weave it into the theoretical framework discussion. ✅</div><div class="sd-msg-time">Today · 2:41 PM</div></div>
+            </div>
+          </div>
+          <div class="sd-msg-input-row">
+            <input class="sd-msg-input" type="text" placeholder="Send a message…"/>
+            <button class="sd-btn-send">➤</button>
+          </div>
+        </div>
+
+        <!-- FILES -->
+        <div class="sd-mini-card">
+          <div class="sd-mini-title"><span class="sdot"></span>Order Files</div>
+          <div class="sd-file-list">
+            <div class="sd-file-item">
+              <div class="sd-file-icon">📄</div>
+              <div class="sd-file-meta"><div class="sd-file-name">Assignment_Brief_Cognitive_Bias.pdf</div><div class="sd-file-size">342 KB · PDF</div></div>
+              <div class="sd-file-date">Jun 16</div>
+            </div>
+            <div class="sd-file-item">
+              <div class="sd-file-icon">📊</div>
+              <div class="sd-file-meta"><div class="sd-file-name">Reference_List_Approved.docx</div><div class="sd-file-size">88 KB · Word</div></div>
+              <div class="sd-file-date">Jun 17</div>
+            </div>
+            <div class="sd-file-item">
+              <div class="sd-file-icon">🔒</div>
+              <div class="sd-file-meta"><div class="sd-file-name">Draft_v1_[locked until done]</div><div class="sd-file-size">Unlocks on delivery</div></div>
+              <div class="sd-file-date" style="color:var(--amber)">Pending</div>
+            </div>
+          </div>
+          <button class="sd-upload-btn">＋ Upload a file for your tutor</button>
+        </div>
+      </div>
+
+    </div><!-- /sd-content -->
+  </div><!-- /sd-main -->
+</div><!-- /#page-dashboard -->
+
+<script>
+  function goToDash() {
+    document.getElementById('page-landing').classList.remove('active');
+    var dash = document.getElementById('page-dashboard');
+    dash.classList.add('active');
+    window.scrollTo(0,0);
+  }
+  function goToLanding() {
+    document.getElementById('page-dashboard').classList.remove('active');
+    document.getElementById('page-landing').classList.add('active');
+    window.scrollTo(0,0);
+  }
+  function scrollTo(id) {
+    var el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }
+  // Live countdown to June 20 23:59 EST
+  function updateCountdown(){
+    var dl = new Date('2026-06-20T23:59:00-05:00');
+    var now = new Date();
+    var diff = dl - now;
+    var el = document.getElementById('sd-countdown');
+    if(!el) return;
+    if(diff<=0){el.textContent='Due now!';return;}
+    var h = Math.floor(diff/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    el.textContent = h+'h '+m+'m';
+  }
+  updateCountdown();
+  setInterval(updateCountdown,60000);
+</script>
+</body>
+</html>
